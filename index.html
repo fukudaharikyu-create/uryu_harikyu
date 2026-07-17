@@ -112,29 +112,6 @@
   @media(max-width:760px){
     .pc-br{display:none;}
   }
-  /* iPhone Safari対策：文章コンテナの幅を明示的に狭めることで、
-     iOS Safari特有の不自然な改行（隅切れ・不揃いな折り返し）を防ぐ。
-     word-break/text-wrapだけでは改行位置が最適化されないため、
-     コンテナ幅そのものに余白を持たせて折り返し計算を安定させる。 */
-  @media(max-width:768px){
-    p,
-    .hero-desc,
-    .concept-lines p,
-    .before-intro,
-    .worry p,
-    .vitem p,
-    .addr,
-    .faddr{
-      max-width:92%;
-    }
-    .hero-desc,
-    .concept-lines p,
-    .before-intro,
-    .worry p{
-      margin-left:auto;
-      margin-right:auto;
-    }
-  }
   h1,h2,h3{font-family:"Zen Maru Gothic",sans-serif;font-weight:700;line-height:1.6;}
   .klee{font-family:"Klee One",cursive;}
   img{max-width:100%;display:block;}
@@ -328,6 +305,37 @@
     .sec-head h2{font-size:23px;}
     .hero h1{font-size:20px;}
     .vitem p{font-size:13.5px;line-height:1.7;}
+  }
+
+  /* ---- スマホ（768px以下）：文章コンテナの幅を制限して自然な改行にする ----
+     iPhone Safariは word-break:auto-phrase 非対応のため、
+     コンテナのmax-width（em単位＝文字数基準）で折り返し位置をコントロールする */
+  @media(max-width:768px){
+    /* 中央寄せの文章：1行あたり約20文字で折り返し、ブロックごと中央配置 */
+    .hero h1,
+    .hero-desc,
+    .concept .concept-lines p,
+    .before-intro,
+    .worry p,
+    .worry h3,
+    .card p{
+      max-width:20em;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    /* 左寄せの文章：幅のみ制限（中央寄せしない） */
+    .vitem p,
+    .parking-note p,
+    .info-box .sub{
+      max-width:22em;
+    }
+    /* 見出しは少し狭めに */
+    .sec-head h2,
+    .reserve h2{
+      max-width:14em;
+      margin-left:auto;
+      margin-right:auto;
+    }
   }
 
   /* ---- ページ切り替え（SPA） ---- */
