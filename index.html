@@ -112,6 +112,29 @@
   @media(max-width:760px){
     .pc-br{display:none;}
   }
+  /* iPhone Safari対策：文章コンテナの幅を明示的に狭めることで、
+     iOS Safari特有の不自然な改行（隅切れ・不揃いな折り返し）を防ぐ。
+     word-break/text-wrapだけでは改行位置が最適化されないため、
+     コンテナ幅そのものに余白を持たせて折り返し計算を安定させる。 */
+  @media(max-width:768px){
+    p,
+    .hero-desc,
+    .concept-lines p,
+    .before-intro,
+    .worry p,
+    .vitem p,
+    .addr,
+    .faddr{
+      max-width:92%;
+    }
+    .hero-desc,
+    .concept-lines p,
+    .before-intro,
+    .worry p{
+      margin-left:auto;
+      margin-right:auto;
+    }
+  }
   h1,h2,h3{font-family:"Zen Maru Gothic",sans-serif;font-weight:700;line-height:1.6;}
   .klee{font-family:"Klee One",cursive;}
   img{max-width:100%;display:block;}
