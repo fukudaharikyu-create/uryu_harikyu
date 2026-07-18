@@ -696,5 +696,52 @@
   window.addEventListener('hashchange',routeFromHash);
   document.addEventListener('DOMContentLoaded',routeFromHash);
 </script>
+<script type="module">
+  // ============================================================
+  // BudouX：日本語文章を文節単位で改行させる（iPhone Safari対応）
+  // ライブラリのDOMヘルパーは使わず、parse()の結果をもとに
+  // ゼロ幅スペース(U+200B)を挿入する方式（互換性重視）
+  // ============================================================
+  try {
+    const { loadDefaultJapaneseParser } = await import('https://cdn.jsdelivr.net/npm/budoux@0.6.2/module/index.js');
+    const parser = loadDefaultJapaneseParser();
+    const ZWSP = '\u200B';
+
+    const applyBudoux = (el) => {
+      // 子要素（<b>など）を保ったままテキストノードだけを処理する
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach((node) => {
+        const text = node.nodeValue;
+        if (text && text.trim()) {
+          node.nodeValue = parser.parse(text).join(ZWSP);
+        }
+      });
+      // 文節の切れ目（ZWSP）でのみ折り返すようにする
+      el.style.wordBreak = 'keep-all';
+      el.style.overflowWrap = 'anywhere';
+    };
+
+    const targets = document.querySelectorAll([
+      '.hero h1 .ln',
+      '.hero-desc',
+      '.concept .concept-lines p',
+      '.sec-head h2',
+      '.before-intro',
+      '.worry h3',
+      '.worry p',
+      '.card p',
+      '.vitem p',
+      '.parking-note p',
+      '.info-box .sub',
+      '.reserve h2'
+    ].join(','));
+    targets.forEach(applyBudoux);
+  } catch (e) {
+    // CDNが読み込めない場合は既存のCSS（max-width制御）のまま表示
+    console.warn('BudouX load failed:', e);
+  }
+</script>
 </body>
 </html>
