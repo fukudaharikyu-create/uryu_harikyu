@@ -241,6 +241,10 @@
     .price-indent-row__amount{font-size:22px;}
     .price-box{padding:24px 18px;}
     .sn-line{display:inline-block;white-space:nowrap;}
+    .pk-line{display:inline-block;white-space:nowrap;}
+    .pc-join + .pk-line{display:inline-block;white-space:nowrap;}
+    .bi-line{display:inline-block;white-space:nowrap;}
+    .bi-comma{display:none;}
   }
 
   /* ---- 営業時間・アクセス ---- */
@@ -263,7 +267,10 @@
   .parking-ttl{font-size:15px;color:var(--sakura-deep);margin-bottom:8px;
     display:flex;align-items:center;gap:8px;font-family:"Zen Maru Gothic",sans-serif;}
   .parking-ttl .dot-diamond{color:var(--sage);font-size:12px;}
-  .parking-note p{font-size:14px;color:var(--ink);line-height:1.85;}
+  .parking-note p{font-size:13px;color:var(--ink);line-height:1.85;}
+  .pk-line{display:inline-block;white-space:nowrap;}
+  .pk-line.pc-join::after{content:"";}
+  .pc-join + .pk-line{display:inline;white-space:nowrap;}
 
   /* ---- ご来院について ---- */
   .visit{background:var(--paper);}
@@ -371,6 +378,8 @@
   /* ご来院前に */
   .before-intro{max-width:640px;margin:0 auto 30px;text-align:center;
     color:var(--ink-soft);font-size:15px;line-height:1.9;}
+  .bi-line{display:inline;}
+  .bi-comma{display:inline;}
 </style>
 </head>
 <body>
@@ -603,7 +612,7 @@
         <a class="mapbtn" href="https://www.google.com/maps/place/%E3%81%86%E3%82%8A%E3%82%85%E3%81%86%E3%81%AF%E3%82%8A%E7%81%B8%E9%99%A2/@33.5807483,130.0736581,11z/data=!4m10!1m2!2m1!1z44GG44KK44KF44GG44Gv44KK44GN44KF44GG6Zmi!3m6!1s0x3541939af0790f4b:0xd6854490532e89c2!8m2!3d33.5807483!4d130.3785287!15sCh7jgYbjgorjgoXjgYbjga_jgorjgY3jgoXjgYbpmaKSARJhY3VwdW5jdHVyZV9jbGluaWPgAQA!16s%2Fg%2F11njxzyjvm?entry=ttu&g_ep=EgoyMDI2MDYyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Googleマップで見る →</a>
         <div class="parking-note">
           <h3 class="parking-ttl"><span class="dot-diamond">◇</span>駐車場について</h3>
-          <p>駐車場はございません。お近くのコインパーキングをご利用ください。<br>少し分かりづらい場所にあるため、ご予約確定後に詳しい道案内をお送りしております。</p>
+          <p><span class="pk-line">駐車場はございません。</span><span class="pk-line">お近くのコインパーキングをご利用ください。</span><span class="pk-line">少し分かりづらい場所にあるため、</span><span class="pk-line pc-join">ご予約確定後に、</span><span class="pk-line">詳しい道案内をお送りしております。</span></p>
         </div>
       </div>
     </div>
@@ -630,7 +639,7 @@
       </div>
       <div class="info">
         <div class="info-box">
-          <p class="before-intro" style="margin-bottom:24px;">安心して施術を受けていただくために、以下をご確認ください。</p>
+          <p class="before-intro" style="margin-bottom:24px;"><span class="bi-line">安心して施術を受けていただくために<span class="bi-comma">、</span></span><span class="bi-line">以下をご確認ください。</span></p>
           <div class="vlist">
             <div class="vitem vitem--simple">
               <p>完全予約制でご案内しています。</p>
