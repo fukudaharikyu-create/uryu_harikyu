@@ -739,7 +739,7 @@
   }
   function routeFromHash(){
     var id=(location.hash||'').replace('#','');
-    var valid=['feat','menu','hours','access','before'];
+    var valid=['omoi','feat','menu','hours','access','before'];
     showPage(valid.indexOf(id)>=0?id:'home');
   }
   window.addEventListener('hashchange',routeFromHash);
