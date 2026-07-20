@@ -112,6 +112,11 @@
   @media(max-width:760px){
     .pc-br{display:none;}
   }
+  /* スマホ用の改行。PCでは消して自然に流す */
+  .sp-br{display:none;}
+  @media(max-width:480px){
+    .sp-br{display:inline;}
+  }
   h1,h2,h3{font-family:"Zen Maru Gothic",sans-serif;font-weight:700;line-height:1.6;}
   .klee{font-family:"Klee One",cursive;}
   img{max-width:100%;display:block;}
@@ -651,7 +656,7 @@
               <p>お灸を使用するため、施術後は衣類に香りが残ることがあります。気になる方は、においがついても差し支えない服装でご来院ください。</p>
             </div>
             <div class="vitem vitem--simple">
-              <p>当院では、感染予防と衛生管理を<br>徹底しております。<br>施術には滅菌処理された使い捨ての<br>鍼を使用し、針を置くシャーレも<br>患者さまごとに、新しいものへ交換しております。</p>
+              <p>当院では、感染予防と衛生管理を<br class="sp-br">徹底しております。<br class="sp-br">施術には滅菌処理された使い捨ての<br class="sp-br">鍼を使用し、針を置くシャーレも<br class="sp-br">患者さまごとに、新しいものへ<br class="sp-br">交換しております。</p>
             </div>
           </div>
         </div>
