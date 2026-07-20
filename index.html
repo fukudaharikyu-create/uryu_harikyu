@@ -685,6 +685,8 @@
   function showPage(id){
     var bar=document.getElementById('fixed-back');
     if(bar){bar.style.display=(id==='home')?'none':'block';}
+    var footer=document.querySelector('footer');
+    if(footer){footer.style.paddingBottom=(id==='home')?'':'80px';}
     var target=document.getElementById('page-'+id);
     if(!target){id='home';target=document.getElementById('page-home');}
     var pages=document.querySelectorAll('.page');
